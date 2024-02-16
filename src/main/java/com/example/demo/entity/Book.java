@@ -8,8 +8,8 @@ public class Book { // Book->Table
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 일련번호 : 1 2 3 4
     @Column(length = 50, nullable = false)
-    private String title;
+    private String title; // 제목
     private  int price;
-    private String name;
+    private String name; // 저자
     private int page;
 }

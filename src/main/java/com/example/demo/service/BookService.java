@@ -17,7 +17,8 @@ public class BookService {
 
     //전체리스트 가져오기
     public List<Book> getList(){
-        return repository.findAll(); // select * from book
+        //return repository.findAll(); // select * from book
+        return repository.bookList();
     }
     // 등록하기 메서드 만들기
    public Book register(Book book){
@@ -51,4 +52,9 @@ public class BookService {
     public void getByDelete(Long id){
         repository.deleteById(id);
     }
+
+  public Book findByTitleAndName(String title, String name){
+        return repository.findByTitleName(title, name);
+  }
+
 }

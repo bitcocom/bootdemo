@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class BookRestController {
+public class BookRestController { // <---- Ajax(JSON)---->View(JSP/Thymeleaf)
 
     @Autowired
     private BookService service;
@@ -55,5 +55,10 @@ public class BookRestController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to delete book with id: " + id + ". Error: " + e.getMessage());
         }
+    }
+
+    @GetMapping("/books/{title}/{name}") // books/Python/패스트
+    public Book findByTitleAndName(@PathVariable String title, @PathVariable String name){
+         return service.findByTitleAndName(title, name);
     }
 }
