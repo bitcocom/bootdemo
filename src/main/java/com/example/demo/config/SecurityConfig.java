@@ -2,6 +2,9 @@ package com.example.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -10,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 @Configuration
 @EnableWebSecurity // 웹 보안을 활성화
+@EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig {
 
     @Bean
@@ -38,6 +42,10 @@ public class SecurityConfig {
                 .clearAuthentication(true) // 로그아웃 시 인증정보 클리어(SecurityContext)
                 .deleteCookies("JSESSIONID") // 로그아웃 시 삭제할 쿠키 이름
                 .invalidateHttpSession(true) // 세션 무효화
+            )
+            .oauth2Login(oauth2Login -> oauth2Login
+               .loginPage("/ui/list")
+               .defaultSuccessUrl("/ui/list")
             );
         return http.build();
     }

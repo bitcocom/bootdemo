@@ -31,7 +31,7 @@ public class MemberService {
         vo.setPassword(hashedPassword);
         // 2. 권한 부여(ㅁUSER ㅁMANAGER ㅁADMIN)
         Set<Role> roles = new HashSet<>();
-        Role userRole = roleService.findByName("USER"); // Find or create the USER role
+        Role userRole = roleService.findByName("USER"); // Find or create the USER role, 1, 2, 3
         roles.add(userRole); // USER
         //roles.add(userRole); // MANAGER
         //roles.add(userRole); // ADMIN

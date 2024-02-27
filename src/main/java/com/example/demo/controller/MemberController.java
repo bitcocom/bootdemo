@@ -18,10 +18,11 @@ import java.util.List;
 public class MemberController {
     @Autowired
     private MemberService memberService;
-      @GetMapping("/memberRegister")
+    @GetMapping("/memberRegister")
     public String memberRegister(){
         return "member/register"; //register.html(회원가입 UI)
     }
+
     @PostMapping("/memberRegister")
     public String memberRegister(Member vo){ // 파라메터수집
         memberService.memberRegister(vo);//저장완료

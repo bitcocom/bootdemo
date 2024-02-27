@@ -28,6 +28,7 @@
                     <input type="password" id="password" name="password" class="form-control" placeholder="패스워드">
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm">로그인</button>
+                <a href="/oauth2/authorization/google" class="btn btn-primary btn-sm">구글로그인</a>
             </form>
             <!-- 로그인 정보 및 로그아웃 버튼 -->
             <div th:if="${#authorization.expression('isAuthenticated()')}" class="d-flex align-items-center justify-content-center">

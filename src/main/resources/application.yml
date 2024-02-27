@@ -1,3 +1,6 @@
+server:
+  port: '8081'
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -16,5 +19,12 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: 'true'
-server:
-  port: '8081'
+
+  security:
+    oauth2:
+      client:
+        registration:
+         google:
+           client-id: 943084645446-q94ua60ft56pblmn5b98dd8nush0h908.apps.googleusercontent.com
+           client-secret: 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
+           scope: profile, email
